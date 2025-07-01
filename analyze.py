@@ -13,7 +13,7 @@ def analysis(audio_path):
     fmax=librosa.note_to_hz('C7')
     )
 
-    amplitude[voiced_flag<0.7] = np.nan
+    frequency[voiced_flag<0.7] = np.nan
 
     #First parameter pitch mean
     pitch_mean = np.nanstd(frequency)
@@ -43,8 +43,18 @@ def analysis(audio_path):
     note_duration_mean = np.mean(note_durations)
     note_duration_std = np.std(note_durations)
 
-    pass
+    parameters = {
+        'pitch mean': pitch_mean,
+        'pitch std': pitch_std,
+        'pitch range': pitch_range,
+        'pitch variation wrt time': pitch_slope_wrt_time,
+        'onset strength mean': onset_strength_mean,
+        'tempo': tempo,
+        'note duration mean': note_duration_mean,
+        'note duration std': note_duration_std 
+    }
 
+    return parameters
 
 
 
