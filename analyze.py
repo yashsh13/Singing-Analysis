@@ -10,7 +10,8 @@ def analysis(audio_path):
     frequency, voiced_flag, voiced_prob = librosa.pyin(
     amplitude,
     fmin=librosa.note_to_hz('C2'),
-    fmax=librosa.note_to_hz('C7')
+    fmax=librosa.note_to_hz('C7'),
+    hop_length=1024
     )
 
     frequency[voiced_flag<0.7] = np.nan
