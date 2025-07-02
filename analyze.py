@@ -4,14 +4,13 @@ import numpy as np
 def analysis(audio_path):
 
     #Get amplitude and sampling rate from audio
-    amplitude, sr = librosa.load(audio_path,sr=4000,duration=5)
+    amplitude, sr = librosa.load(audio_path,sr=None)
 
     #Get frequency
     frequency, voiced_flag, voiced_prob = librosa.pyin(
     amplitude,
     fmin=librosa.note_to_hz('C2'),
     fmax=librosa.note_to_hz('C7'),
-    hop_length=2048
     )
 
     frequency[voiced_flag<0.7] = np.nan
