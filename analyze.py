@@ -4,7 +4,7 @@ import numpy as np
 def analysis(audio_path):
 
     #Get amplitude and sampling rate from audio
-    amplitude, sr = librosa.load(audio_path,sr=None)
+    amplitude, sr = librosa.load(audio_path,sr=16000,duration=30)
 
     #Get frequency
     frequency, voiced_flag, voiced_prob = librosa.pyin(
